@@ -1,0 +1,85 @@
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class ReadFromFile {
+	
+	// https://stackoverflow.com/questions/36369728/regular-expression-and
+	// .*? : take as little as possible
+	
+	
+	// (?s) : enables dot matching newlines,
+	// (?s) : means "single line mode" makes the dot match all characters, including line breaks
+	
+	final static String pattern1 = "//.*|(?s)/\\*.*?\\*/";  // (?s)   /\*   .*?    \*/ 
+
+	
+	
+	
+	public static void matcher1(String s){
+		Pattern pattern = Pattern.compile(pattern1);
+		Matcher matcher = pattern.matcher(s);
+		while (matcher.find()){
+			System.out.println(matcher.group());
+			System.out.println("start at: "  + matcher.start() + " end at: " +  matcher.end());
+		}
+		
+	}
+
+
+
+    public static void getRidOfComments(String inputFileName, String outputFileName) {
+    	String lines = null;
+        
+        try {
+        	
+        	//Reads all the bytes from a file. The method ensures that the file is closed 
+        	//when all bytes have been read or an I/O error, or other runtime exception, 
+        	//is thrown.
+        	
+        	lines = new String(Files.readAllBytes(Paths.get(inputFileName)));
+			
+        }catch(FileNotFoundException ex) {
+        	
+            System.out.println("Unable to open file '" + inputFileName + "'");
+            
+        }catch (IOException e) {
+        	
+        	System.out.println("Error reading file '" + inputFileName + "'");
+        	
+		}
+        	
+        
+        System.out.println(lines);
+        
+        System.out.println("============================");
+        
+        //matcher1(lines);
+        lines = lines.replaceAll(pattern1, " ");
+
+        
+        
+
+        try {
+			Files.write(Paths.get(outputFileName), lines.getBytes());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+        
+        
+    }
+
+    public static void main(String[] args){
+        getRidOfComments("src/Hello/CodeForTest.java", "c:/Users/ZKHYC9X/Documents/output.txt");
+
+
+    }
+
+}
