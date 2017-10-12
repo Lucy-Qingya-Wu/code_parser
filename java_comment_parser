@@ -35,6 +35,8 @@ public class ReadFromFile {
     public static void getRidOfComments(String inputFileName, String outputFileName) {
     	String lines = null;
         
+    	
+    	// Step1: read from file
         try {
         	
         	//Reads all the bytes from a file. The method ensures that the file is closed 
@@ -59,11 +61,13 @@ public class ReadFromFile {
         System.out.println("============================");
         
         //matcher1(lines);
+        
+        // Step2: replace one matching the pattern
         lines = lines.replaceAll(pattern1, " ");
 
         
         
-
+        // Step3: write to file
         try {
 			Files.write(Paths.get(outputFileName), lines.getBytes());
 		} catch (IOException e) {
