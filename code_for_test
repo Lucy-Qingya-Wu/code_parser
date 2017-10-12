@@ -1,0 +1,23 @@
+/**
+ * get rid of this
+ */
+
+public class CodeForTest {
+
+
+    public static void main(String[] args){
+
+        /*
+        This
+        is
+        multi line
+        comment
+        */
+
+        /** The add() method returns addition of given numbers.*/
+        int a = 3; //This is single line comment
+        // get rid of this
+
+        System.out.println(a);
+    }
+}
