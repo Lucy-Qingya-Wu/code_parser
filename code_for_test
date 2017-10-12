@@ -15,9 +15,11 @@ public class CodeForTest {
         */
 
         /** The add() method returns addition of given numbers.*/
-        int a = 3; //This is single line comment
+        int/* some comment */ a = 3; //This is single line comment
         // get rid of this
 
         System.out.println(a);
+        
+        String s = new String("I am /* ABC */ //CDF");
     }
 }
