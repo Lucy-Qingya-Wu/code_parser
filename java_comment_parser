@@ -60,10 +60,10 @@ public class ReadFromFile {
         
         System.out.println("============================");
         
-        //matcher1(lines);
+        matcher1(lines);
         
         // Step2: replace one matching the pattern
-        lines = lines.replaceAll(pattern1, " ");
+        //lines = lines.replaceAll(pattern1, " ");
 
         
         
@@ -86,3 +86,4 @@ public class ReadFromFile {
     }
 
 }
+
